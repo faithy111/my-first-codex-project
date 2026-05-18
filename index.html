@@ -3,34 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>小红书标题生成器</title>
+  <title>厨房百科局内容生成器</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main class="page">
     <section class="hero">
-      <p class="tag">新手友好的网页小项目</p>
-      <h1>小红书标题生成器</h1>
-      <p class="intro">输入一个选题，一键生成 5 个更吸引人的小红书风格标题。</p>
+      <p class="tag">Kitchen Wiki Bureau · 内容值班台</p>
+      <h1>厨房百科局</h1>
+      <p class="intro">输入一个食材、菜谱或厨房问题，一键生成图片提示词、百科正文、话题标签和置顶评论，适合做成温暖又实用的美食科普笔记。</p>
 
       <div class="generator-card">
-        <label for="topicInput">你的选题</label>
+        <label for="topicInput">今天要整理的厨房主题</label>
         <div class="input-row">
-          <input id="topicInput" type="text" placeholder="例如：西瓜怎么挑" autocomplete="off">
-          <button id="generateButton" type="button">生成标题</button>
+          <input id="topicInput" type="text" placeholder="例如：番茄炒蛋为什么出水 / 空气炸锅烤红薯" autocomplete="off">
+          <button id="generateButton" type="button">生成整套内容</button>
         </div>
-        <p class="hint">可以输入生活技巧、学习方法、美食探店、穿搭护肤等主题。</p>
+        <p class="hint">建议输入食材、做法、避坑问题或厨房小知识，内容会自动套用「厨房百科局」的口吻。</p>
       </div>
     </section>
 
     <section class="results-card" aria-live="polite">
       <div class="results-header">
-        <h2>生成结果</h2>
-        <span>5 个标题</span>
+        <div>
+          <p class="eyebrow">生成结果</p>
+          <h2>四件套内容包</h2>
+        </div>
+        <span>可直接复制改写</span>
       </div>
-      <ol id="titleList" class="title-list">
-        <li>先输入一个选题，然后点击“生成标题”。</li>
-      </ol>
+
+      <div id="resultsGrid" class="results-grid">
+        <article class="result-panel result-panel--image">
+          <div class="panel-heading">
+            <span class="panel-icon" aria-hidden="true">📷</span>
+            <h3>图片提示词生成</h3>
+          </div>
+          <p id="imagePrompt" class="result-text">先输入一个厨房主题，然后点击“生成整套内容”。</p>
+        </article>
+
+        <article class="result-panel result-panel--body">
+          <div class="panel-heading">
+            <span class="panel-icon" aria-hidden="true">📖</span>
+            <h3>正文生成</h3>
+          </div>
+          <p id="bodyCopy" class="result-text">这里会生成一段浅显、可信、有生活感的百科局正文。</p>
+        </article>
+
+        <article class="result-panel result-panel--tags">
+          <div class="panel-heading">
+            <span class="panel-icon" aria-hidden="true">🏷️</span>
+            <h3>话题标签生成</h3>
+          </div>
+          <div id="tagList" class="tag-list" aria-label="生成的话题标签">
+            <span>#厨房百科局</span>
+            <span>#下厨小知识</span>
+            <span>#今天吃什么</span>
+          </div>
+        </article>
+
+        <article class="result-panel result-panel--comment">
+          <div class="panel-heading">
+            <span class="panel-icon" aria-hidden="true">💬</span>
+            <h3>置顶评论生成</h3>
+          </div>
+          <p id="pinnedComment" class="result-text">评论区会补充一个适合置顶的互动问题或避坑提醒。</p>
+        </article>
+      </div>
     </section>
   </main>
 
